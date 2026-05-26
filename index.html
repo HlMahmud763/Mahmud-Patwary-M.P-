@@ -1,263 +1,946 @@
+
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mahmud Patwary (MP) - Personal Website</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<title>Mahmud Patwary (MP) - Website</title>
 
-<style>
-/* --- বেসিক স্টাইল --- */
-* {margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif;}
-body {
-    background: linear-gradient(135deg, #4a90e2, #ffffff); 
-    background-attachment: fixed;
-    color:#333;
-    overflow-x: hidden;
-}
-a{text-decoration:none;}
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-/* --- Header (সবকিছু মাঝখানে) --- */
-header {
-    text-align:center; 
-    padding: 80px 20px 40px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* ছবি ও টেক্সট সেন্টারে রাখার জন্য */
-}
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-header h1 {
-    font-size: clamp(1.8rem, 5vw, 3rem); 
-    color:#fff; 
-    margin-bottom:15px; 
-    text-shadow:1px 1px 3px rgba(0,0,0,0.3);
-}
+<!-- AOS Animation -->
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
-.profile-pic {
-    width: 180px; 
-    height: 180px; 
-    max-width: 80%;
-    border-radius:50%; 
-    object-fit:cover; 
-    border:4px solid #fff; 
-    margin-bottom:20px; 
-    transition: 0.5s;
-    display: block;
-}
-.profile-pic:hover {
-    transform: scale(1.1) rotate(3deg); 
-    box-shadow:0 15px 25px rgba(0,0,0,0.3);
-}
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-header h2 {
-    font-size: clamp(1.5rem, 4vw, 2.5rem); 
-    font-weight:700; 
-    margin-bottom:15px;
-    background: linear-gradient(45deg,#ff8a00,#e52e71,#4a90e2);
-    -webkit-background-clip:text; 
-    -webkit-text-fill-color:transparent;
-    text-shadow:2px 2px 6px rgba(0,0,0,0.3);
-    transition: 0.3s;
-}
-header h2:hover {transform: scale(1.05);}
+<link rel="stylesheet" href="style.css">
 
-header p {
-    font-size: clamp(1rem, 2.5vw, 1.2rem); 
-    margin-bottom:25px; 
-    color:#f0f0f0;
-}
-
-.btn-contact {
-    padding:12px 35px; 
-    background:#fff; 
-    color:#4a90e2; 
-    border:2px solid #fff; 
-    border-radius:30px; 
-    cursor:pointer; 
-    font-weight: 600;
-    transition: 0.4s;
-}
-.btn-contact:hover {
-    background:#4a90e2; 
-    color:#fff; 
-    transform: translateY(-3px);
-}
-
-.social-links {margin-top:25px;}
-.social-links a {
-    display:inline-block; 
-    margin:0 12px; 
-    font-size:1.8rem; 
-    color:#fff; 
-    transition:0.4s;
-}
-.social-links a:hover {
-    color:#ff8a00; 
-    transform: scale(1.2) translateY(-5px);
-}
-
-/* --- Main Layout --- */
-main {
-    max-width:1000px; 
-    margin: 30px auto; 
-    padding: 20px; 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-    gap: 25px;
-}
-
-section {
-    background: rgba(255,255,255,0.95); 
-    padding: 35px 25px; 
-    border-radius:20px; 
-    box-shadow:0 10px 20px rgba(0,0,0,0.1);
-    text-align: center; /* সেকশনের ভেতরের টেক্সট সেন্টারে */
-    transition: 0.3s;
-}
-section:hover {transform: translateY(-5px);}
-
-section h2 {
-    color:#4a90e2; 
-    margin-bottom:20px; 
-    font-size: 1.8rem;
-}
-section h2::after {
-    content:''; 
-    width:50px; 
-    height:3px; 
-    background:#4a90e2; 
-    display:block; 
-    margin:10px auto 0;
-}
-
-section p {line-height:1.8; color: #555;}
-
-/* কন্টাক্ট ইনফো স্টাইল */
-.contact-info p {
-    margin-bottom: 15px; 
-    font-size: 1.05rem;
-    word-wrap: break-word;
-}
-.contact-info a {
-    color:#4a90e2; 
-    font-weight:600; 
-    transition: 0.3s;
-}
-.contact-info a:hover {color: #e52e71;}
-
-/* --- Footer --- */
-footer {
-    background:#333; 
-    color:#fff; 
-    text-align:center; 
-    padding:30px; 
-    margin-top:50px;
-}
-
-/* --- Modal --- */
-.modal {
-    display:none; 
-    position:fixed; 
-    z-index:1000; 
-    left:0; top:0; width:100%; height:100%;
-    background:rgba(0,0,0,0.7); 
-    justify-content:center; 
-    align-items:center;
-}
-.modal.show {display: flex;}
-
-.modal-content {
-    background:#fff; 
-    padding:40px; 
-    border-radius:20px; 
-    width: 90%; 
-    max-width: 400px;
-    position:relative; 
-    text-align: center;
-}
-.modal-content a {
-    font-size:2.5rem; 
-    margin:15px; 
-    color:#4a90e2; 
-    display: inline-block;
-    transition: 0.3s;
-}
-.modal-content a:hover {transform: scale(1.2); color: #e52e71;}
-
-.close-btn {
-    position:absolute; 
-    top:10px; right:15px; 
-    font-size:2rem; 
-    cursor:pointer;
-}
-
-/* মোবাইল রেসপন্সিভ */
-@media(max-width: 600px) {
-    header h1 {font-size: 2rem;}
-    .profile-pic {width: 150px; height: 150px;}
-    main {grid-template-columns: 1fr;}
-}
-</style>
 </head>
+
 <body>
 
-<header>
-    <h1>Welcome to My Website</h1>
-    <img src="My-photo.jpg" alt="Mahmud Patwary" class="profile-pic">
-    <h2>Mahmud Patwary (MP)</h2>
-    <p>Graphics Designer, Code Expert, Digital Creator</p>
-    <button class="btn-contact" id="openModal">Contact Me</button>
-    
-    <div class="social-links">
-        <a href="https://www.facebook.com/hlmahmud.mp" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.instagram.com/hlmahmud.mp" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/8801792644763" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    </div>
-</header>
+<!-- ================= NAVBAR ================= -->
 
-<main>
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Assalamualaikum! I'm Mahmud, a Graphics Designer based in Dhaka, Bangladesh. I specialize in creative design and coding. I'm here to help you bring your ideas to life.</p>
-    </section>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
 
-    <section id="contact">
-        <h2>Quick Contact</h2>
-        <div class="contact-info">
-            <p><strong>Email:</strong><br> <a href="mailto:mahmudpatwary763@gmail.com">mahmudpatwary763@gmail.com</a></p>
-            <p><strong>WhatsApp:</strong><br> <a href="https://wa.me/8801792644763" target="_blank">+880 1792-644763</a></p>
-        </div>
-    </section>
-</main>
+<div class="container">
 
-<footer>
-    <p>Thank you all. Fi Amanillah</p>
-    <p>© 2025 Mahmud Patwary (MP)</p>
-</footer>
+<a class="navbar-brand" href="#">
+Mahmud (MP)
+</a>
 
-<div class="modal" id="contactModal">
-    <div class="modal-content">
-        <span class="close-btn" id="closeModal">&times;</span>
-        <h3 style="margin-bottom:20px;">Contact Me</h3>
-        <a href="https://wa.me/8801792644763" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        <a href="mailto:mahmudpatwary763@gmail.com"><i class="fas fa-envelope"></i></a>
-        <a href="https://www.facebook.com/hlmahmud.mp" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.instagram.com/hlmahmud.mp" target="_blank"><i class="fab fa-instagram"></i></a>
-    </div>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+<div class="collapse navbar-collapse" id="navbarNav">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link active" href="#home">Home</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#projects">Projects</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#webdesign">Web Designs</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#graphics">Graphics Designs</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#achievements">Achievements</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#certificates">Certificates</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#about">About Me</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#contact">Contact</a>
+</li>
+
+</ul>
+
 </div>
 
-<script>
-const openBtn = document.getElementById('openModal');
-const closeBtn = document.getElementById('closeModal');
-const modal = document.getElementById('contactModal');
+</div>
 
-openBtn.onclick = () => modal.classList.add('show');
-closeBtn.onclick = () => modal.classList.remove('show');
-window.onclick = (e) => { if(e.target === modal) modal.classList.remove('show'); }
+</nav>
+
+<!-- ================= HERO SECTION ================= -->
+
+<section class="hero" id="home">
+
+<!-- HERO SLIDER -->
+
+<div id="heroSlider" class="carousel slide carousel-fade hero-slider" data-bs-ride="carousel">
+
+<div class="carousel-inner">
+
+<div class="carousel-item active">
+<img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1600&auto=format&fit=crop">
+</div>
+
+<div class="carousel-item">
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop">
+</div>
+
+<div class="carousel-item">
+<img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1600&auto=format&fit=crop">
+</div>
+
+<div class="carousel-item">
+<img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=1600&auto=format&fit=crop">
+</div>
+
+</div>
+
+</div>
+
+<div class="hero-overlay"></div>
+
+<!-- WELCOME TEXT -->
+
+<div class="hero-top-text" data-aos="zoom-in">
+
+<h1>
+Welcome To My Website
+</h1>
+
+<p>
+
+Professional Web Development, Graphics Design & Programming Solutions With Modern UI, Responsive Layouts, Smooth Animations And Premium User Experience.
+
+</p>
+
+</div>
+
+<!-- HERO BOTTOM CONTENT -->
+
+<div class="hero-bottom container">
+
+<div class="row align-items-center">
+
+<!-- LEFT -->
+
+<div class="col-lg-7">
+
+<div class="hero-content" data-aos="fade-right">
+
+<h2>
+Mahmud Patwary
+</h2>
+
+<h3>
+Programmer • Web Developer • Graphics Designer
+</h3>
+
+<p>
+
+I create modern websites, professional graphics designs and interactive digital experiences with clean UI and premium animations.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#about" class="hero-btn">
+Get Started
+</a>
+
+<a href="#projects" class="hero-btn-outline">
+Explore Projects
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- RIGHT -->
+
+<div class="col-lg-5">
+
+<div class="profile-shape" data-aos="fade-left">
+
+<!-- নিজের ছবি লিংক বসাবে -->
+
+<img src="https://scontent.fdac138-1.fna.fbcdn.net/v/t39.30808-6/683662433_122235242798110933_4625042419215792861_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=sV1t8e5OXu0Q7kNvwG87of6&_nc_oc=AdrhNFtrm45MmKM9jIY3mKN743LgpV5Meu6zUX03UrUEWG-SvtiCR2L_4bS3_iXbPPY&_nc_zt=23&_nc_ht=scontent.fdac138-1.fna&_nc_gid=di4aE4eUvf3TeEnk6-uodg&_nc_ss=7b2a8&oh=00_Af6qF7v7tqp7oU3F7qSi6_HXo2DJdUOUM70zxs-uxn5ajA&oe=6A1BD4FD">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= PROJECTS ================= -->
+
+<section id="projects">
+
+<div class="container">
+
+<h2 class="section-title" data-aos="fade-up">
+Projects
+</h2>
+
+<div class="row g-4">
+
+<!-- PROJECT 1 -->
+
+<div class="col-md-4" data-aos="zoom-in">
+
+<div class="portfolio-box">
+
+<img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1200&auto=format&fit=crop">
+
+<div class="portfolio-content">
+
+<h4>Mahmud Patwary (MP)</h4>
+
+<p>
+
+Modern responsive portfolio website with premium UI, animations and interactive design.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PROJECT 2 -->
+
+<div class="col-md-4" data-aos="zoom-in" data-aos-delay="150">
+
+<div class="portfolio-box">
+
+<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop">
+
+<div class="portfolio-content">
+
+<h4>Creative Dashboard</h4>
+
+<p>
+
+Professional admin dashboard interface with glassmorphism effects and smooth animations.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PROJECT 3 -->
+
+<div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+
+<div class="portfolio-box">
+
+<img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=1200&auto=format&fit=crop">
+
+<div class="portfolio-content">
+
+<h4>Business Landing Page</h4>
+
+<p>
+
+Modern business landing page with responsive layout and premium user experience.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= WEB DESIGNS ================= -->
+
+<section id="webdesign">
+
+<div class="container">
+
+<h2 class="section-title" data-aos="fade-up">
+Web Designs
+</h2>
+
+<!-- FEATURE CARDS -->
+
+<div class="row g-4 mb-5">
+
+<div class="col-md-3" data-aos="zoom-in">
+
+<div class="feature-card">
+
+<i class="fas fa-code"></i>
+
+<h4>Modern UI</h4>
+
+<p>
+Beautiful responsive web layouts.
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-3" data-aos="zoom-in" data-aos-delay="100">
+
+<div class="feature-card">
+
+<i class="fas fa-laptop-code"></i>
+
+<h4>Responsive</h4>
+
+<p>
+Fully mobile friendly design systems.
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-3" data-aos="zoom-in" data-aos-delay="200">
+
+<div class="feature-card">
+
+<i class="fas fa-layer-group"></i>
+
+<h4>Interactive</h4>
+
+<p>
+Smooth animations and effects.
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-3" data-aos="zoom-in" data-aos-delay="300">
+
+<div class="feature-card">
+
+<i class="fas fa-rocket"></i>
+
+<h4>Performance</h4>
+
+<p>
+Fast optimized websites.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- WEBSITE SHOWCASE -->
+
+<div class="row g-4">
+
+<!-- WEBSITE 1 -->
+
+<div class="col-md-3" data-aos="zoom-in">
+
+<a href="https://hlmahmud763.github.io/shahid-osman-hadi/" target="_blank" class="website-card">
+
+<img src="https://osmanhadi.lovable.app/assets/osman6-LChoTCRD.jpg">
+
+<div class="website-overlay">
+
+<h4>Shahid Osman Hadi</h4>
+
+<p>
+Professional personal portfolio website with premium design.
+</p>
+
+</div>
+
+</a>
+
+</div>
+
+<!-- WEBSITE 2 -->
+
+<div class="col-md-3" data-aos="zoom-in" data-aos-delay="100">
+
+<a href="https://hlmahmud763.github.io/Photo-Gallery_MP/" target="_blank" class="website-card">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfv-qC-R7hQ3ztdsCyP0blPOuHBZmkeAsZ-Q&s">
+
+<div class="website-overlay">
+
+<h4>Graphics Designs Gallery</h4>
+
+<p>
+Creative gallery website for modern graphics designs showcase.
+</p>
+
+</div>
+
+</a>
+
+</div>
+
+<!-- WEBSITE 3 -->
+
+<div class="col-md-3" data-aos="zoom-in" data-aos-delay="200">
+
+<a href="https://hlmahmud763.github.io/PC-EDGE_V1/" target="_blank" class="website-card">
+
+<img src="https://i.pinimg.com/736x/c5/af/70/c5af70861cfb25ff868f0a1f383bef11.jpg">
+
+<div class="website-overlay">
+
+<h4>PC EDGE (V1)</h4>
+
+<p>
+Modern PC and gaming products website with clean UI.
+</p>
+
+</div>
+
+</a>
+
+</div>
+
+<!-- WEBSITE 4 -->
+
+<div class="col-md-3" data-aos="zoom-in" data-aos-delay="300">
+
+<a href="https://hlmahmud763.github.io/PC-EDGE-ORG/" target="_blank" class="website-card">
+
+<img src="https://i.pinimg.com/736x/b3/44/b6/b344b6935809903e8270890cc208d077.jpg">
+
+<div class="website-overlay">
+
+<h4>PC EDGE (V2)</h4>
+
+<p>
+Advanced premium PC marketplace website design.
+</p>
+
+</div>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= GRAPHICS ================= -->
+
+<section id="graphics">
+
+<div class="container">
+
+<h2 class="section-title" data-aos="fade-up">
+Graphics Designs
+</h2>
+
+<div class="row g-4">
+
+<!-- GRAPHICS 1 -->
+
+<div class="col-md-4" data-aos="zoom-in">
+
+<div class="graphics-card">
+
+<img src="https://scontent.fdac138-1.fna.fbcdn.net/v/t1.6435-9/95363528_711253779678382_9164044493953957888_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=3a1ebe&_nc_ohc=Z5qHhik16yYQ7kNvwHzo-Vi&_nc_oc=AdrZVL3AY-5yK78LjWcGiKv07KV_A1_vQGS3fNm2m4PqpJvUKD156n0TwqMNSaB1zDQ&_nc_zt=23&_nc_ht=scontent.fdac138-1.fna&_nc_gid=nuYtN6sstAOyxeLPdu7DuA&_nc_ss=7b2a8&oh=00_Af5yTTUzGNtyocdjzBLl_iyEaUEdtl2mLHGGtysDr7CF0A&oe=6A3D8C14">
+
+<div class="graphics-content">
+
+<h4>ALLAHU AKBAR</h4>
+
+<p>
+Beautiful Calligraphy Design For The Phrase "ALLAH IS THE GREAT".
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- GRAPHICS 2 -->
+
+<div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+
+<div class="graphics-card">
+
+<img src="https://scontent.fdac138-1.fna.fbcdn.net/v/t1.6435-9/95571421_711253743011719_4568148699452014592_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=3a1ebe&_nc_ohc=p01RE5ZvFl8Q7kNvwGQxT2C&_nc_oc=Adr5vWKAfsOfGVG2lcv_-FpBcJC70P-Nzyje6y-F10r5LFk19E5_TW4-Ixx1NSYFgxU&_nc_zt=23&_nc_ht=scontent.fdac138-1.fna&_nc_gid=JGMB0gYQJwUCTZoeIXw9Rw&_nc_ss=7b2a8&oh=00_Af7zi7QMIbVaNs2l-EJlh3YccumXVOn8x1ZNWJVw6NkwfA&oe=6A3D853A">
+
+<div class="graphics-content">
+
+<h4>ALHAMDULILLAH</h4>
+
+<p>
+Beautiful Calligraphy Design For The Phrase "All PRAISE BELONGS TO AllAH."
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- GRAPHICS 3 -->
+
+<div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+
+<div class="graphics-card">
+
+<img src="https://scontent.fdac138-1.fna.fbcdn.net/v/t1.6435-9/94937972_711253703011723_2730165368373903360_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=3a1ebe&_nc_ohc=fDFvEZzMuL8Q7kNvwG-FQa0&_nc_oc=Adon28_P9SO1-pDed1HboARhZ6oOzl_ksR6eXwH9OoEVagNE1xLYDWClkPO3xlgP61o&_nc_zt=23&_nc_ht=scontent.fdac138-1.fna&_nc_gid=aIbPrF5QOL0RkFxVlDImww&_nc_ss=7b2a8&oh=00_Af6mwqNLIw9UgHa3wlkTMuddk4XDjoDZyVsQpufgaZsEVw&oe=6A3D66A7">
+
+<div class="graphics-content">
+
+<h4>SUBHANALLAH</h4>
+
+<p>
+Beautiful Calligraphy Design For The Phrase "GlORY BE TO ALLAH."
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- GRAPHICS 4 -->
+
+<div class="col-md-4" data-aos="zoom-in">
+
+<div class="graphics-card">
+
+<img src="https://scontent.fdac138-1.fna.fbcdn.net/v/t1.6435-9/95159903_707556220048138_452575014810550272_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=3a1ebe&_nc_ohc=vf3Lsymr4GUQ7kNvwHMowrW&_nc_oc=Adq_buv4wXhlIAx0jViVD7IJqJst4Fq_vc5o2R5KlgLpuytaGmp3e8r9B2GEM2TDNMc&_nc_zt=23&_nc_ht=scontent.fdac138-1.fna&_nc_gid=eV8L0rrEc2oYwfj6xTIQwA&_nc_ss=7b2a8&oh=00_Af75ZNarOpDNYotKdqDvlFw_BtRoqzck8T35IXLaQZpSOQ&oe=6A3D6893">
+
+<div class="graphics-content">
+
+<h4>ASTAGFIRULLAH</h4>
+
+<p>
+Beautiful Calligraphy Design For The Phrase "I SEEK ALLAH'S FORGIVENESS."
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- GRAPHICS 5 -->
+
+<div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+
+<div class="graphics-card">
+
+<img src="https://scontent.fdac138-1.fna.fbcdn.net/v/t1.6435-9/94882385_706144976855929_7826346877728587776_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=3a1ebe&_nc_ohc=bmKRwd5svGUQ7kNvwHDlEoy&_nc_oc=AdoDdbnYoZ6Amy6PL5t2ylt1imqFdYr-I8gr_mTXL4XTi3ZMbhyJljEe69kGFY-hIhs&_nc_zt=23&_nc_ht=scontent.fdac138-1.fna&_nc_gid=DHWSWwTX5mDWlvZIUMOqpA&_nc_ss=7b2a8&oh=00_Af4iCkxyR64nw_Szck9q3zVA3jUf3cHcoYXkzy0EbqVM-w&oe=6A3D891D">
+
+<div class="graphics-content">
+
+<h4>SABR</h4>
+Beautiful Calligraphy Design For "PATIENCE."
+<p>
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- GRAPHICS 6 -->
+
+<div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+
+<div class="graphics-card">
+
+<img src="https://previews.123rf.com/images/kchung/kchung1705/kchung170500170/78840540-arabic-calligraphy-design-for-eid-mubarak-with-crescent-symbol-and-golden-traditional-patterns.jpg">
+
+<div class="graphics-content">
+
+<h4>EID MUBARAK</h4>
+
+<p>
+Beautiful Design On "EID MUBARAK".
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= ACHIEVEMENTS ================= -->
+
+<section id="achievements">
+
+<div class="container">
+
+<h2 class="section-title" data-aos="fade-up">
+Achievements
+</h2>
+
+<div class="row g-4">
+
+<div class="col-md-4" data-aos="zoom-in">
+
+<div class="feature-card">
+
+<i class="fas fa-award"></i>
+
+<h4>Web Design Certificate</h4>
+
+<p>
+Completed modern web development training.
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4" data-aos="zoom-in" data-aos-delay="150">
+
+<div class="feature-card">
+
+<i class="fas fa-medal"></i>
+
+<h4>Graphics Design Course</h4>
+
+<p>
+Professional graphics and branding course.
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+
+<div class="feature-card">
+
+<i class="fas fa-trophy"></i>
+
+<h4>Programming Achievement</h4>
+
+<p>
+Built multiple responsive websites and apps.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= CERTIFICATES ================= -->
+
+<section id="certificates">
+
+<div class="container">
+
+<h2 class="section-title" data-aos="fade-up">
+Certificates
+</h2>
+
+<div class="row g-4">
+
+<!-- CERTIFICATE 1 -->
+
+<div class="col-md-4" data-aos="zoom-in">
+
+<div class="certificate-card">
+
+<img src="PASTE_CERTIFICATE_IMAGE_1_HERE">
+
+<div class="certificate-content">
+
+<h4>PYTHON</h4>
+
+<p>
+Certificate Of Completion Of - CODING FUNDAMENTALS WITH PYTHON.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CERTIFICATE 2 -->
+
+<div class="col-md-4" data-aos="zoom-in" data-aos-delay="150">
+
+<div class="certificate-card">
+
+<img src="PASTE_CERTIFICATE_IMAGE_2_HERE">
+
+<div class="certificate-content">
+
+<h4>WEBSITE DESIGNING</h4>
+
+<p>
+Certificate Of Completion Of - WEBSITE DESIGN WITH HTML/CSS/JAVA.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CERTIFICATE 3 -->
+
+<div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+
+<div class="certificate-card">
+
+<img src="PASTE_CERTIFICATE_IMAGE_3_HERE">
+
+<div class="certificate-content">
+
+<h4>GRAPHICS DESIGN</h4>
+
+<p>
+Certificate Of Completion Of - GRAPHICS DESIGN WITH PHOTOSHOP/ILLUSTRATOR/PIXELLAB.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about">
+
+<div class="container">
+
+<h2 class="section-title" data-aos="fade-up">
+About Me
+</h2>
+
+<div class="row align-items-center g-5">
+
+<div class="col-lg-6" data-aos="fade-right">
+
+<p class="about-text">
+
+Assalamualaikum! I'm Mahmud Patwary, a passionate programmer, web developer and graphics designer from Bangladesh.
+
+I love building modern responsive websites, designing creative graphics and creating smooth user experiences with animations and premium UI designs.
+
+</p>
+
+</div>
+
+<div class="col-lg-6" data-aos="fade-left">
+
+<div class="about-image">
+
+<img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1200&auto=format&fit=crop">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact">
+
+<div class="container">
+
+<h2 class="section-title" data-aos="fade-up">
+Contact Me
+</h2>
+
+<div class="row g-4">
+
+<div class="col-lg-6" data-aos="fade-right">
+
+<div class="contact-box">
+
+<h4>Email</h4>
+
+<p>
+<a href="mailto:mahmudpatwary763@gmail.com">
+mahmudpatwary763@gmail.com
+</a>
+</p>
+
+<hr>
+
+<h4>WhatsApp</h4>
+
+<p>
+<a href="https://wa.me/8801792644763">
++8801792644763
+</a>
+</p>
+
+<hr>
+
+<h4>Location</h4>
+
+<p>
+Dhaka, Bangladesh
+</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-6" data-aos="fade-left">
+
+<form>
+
+<div class="mb-3">
+
+<input type="text" class="form-control" placeholder="Your Name">
+
+</div>
+
+<div class="mb-3">
+
+<input type="email" class="form-control" placeholder="Your Email">
+
+</div>
+
+<div class="mb-3">
+
+<textarea rows="5" class="form-control" placeholder="Your Message"></textarea>
+
+</div>
+
+<button class="submit-btn">
+
+Send Message
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<h3>
+Mahmud Patwary (MP)
+</h3>
+
+<div class="social-icons">
+
+<a href="https://www.facebook.com/hlmahmud.mp" target="_blank">
+<i class="fab fa-facebook-f"></i>
+</a>
+
+<a href="https://instagram.com/hlmahmud.mp" target="_blank">
+<i class="fab fa-instagram"></i>
+</a>
+
+<a href="https://wa.me/8801792644763" target="_blank">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+<a href="mailto:mahmudpatwary763@gmail.com">
+<i class="fas fa-envelope"></i>
+</a>
+
+<a href="https://t.me/HlMahmud763" target="_blank">
+<i class="fab fa-telegram"></i>
+</a>
+
+</div>
+
+<p>
+© 2026 Mahmud Patwary (MP). All Rights Reserved.
+</p>
+
+</footer>
+
+<!-- Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+
+AOS.init({
+duration:1200,
+once:true
+});
+
 </script>
 
 </body>
 </html>
-
